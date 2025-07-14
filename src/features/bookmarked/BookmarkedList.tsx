@@ -1,3 +1,4 @@
+import type { ExerciseType } from "../../types/ExerciseType";
 import BookmarkedCard from "./BookmarkedCard";
 
 const exerciseData = {
@@ -10,7 +11,7 @@ const exerciseData = {
   equipment: "body weight",
 };
 
-const bookmarked = [
+const bookmarked: ExerciseType[] = [
   {
     ...exerciseData,
     name: "3/4 sit-up",

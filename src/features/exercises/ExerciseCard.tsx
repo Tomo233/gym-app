@@ -1,5 +1,5 @@
 import firstExercise from "../../assets/exercise-1.jpg";
-import type { ExerciseType } from "./ExercisesList";
+import type { ExerciseType } from "../../types/ExerciseType";
 
 function ExerciseCard({ exercise }: { exercise: ExerciseType }) {
   return (

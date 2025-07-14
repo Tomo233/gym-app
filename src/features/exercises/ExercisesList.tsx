@@ -1,15 +1,6 @@
 import { useState } from "react";
 import ExerciseCard from "./ExerciseCard";
-
-export type ExerciseType = {
-  id: number;
-  name: string;
-  category: string;
-  difficulty: string;
-  description: string;
-  bodyPart: string;
-  equipment: string;
-};
+import type { ExerciseType } from "../../types/ExerciseType";
 
 const exerciseData = {
   name: "3/4 sit-up",
