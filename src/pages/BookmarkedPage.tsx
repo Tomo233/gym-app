@@ -1,9 +1,10 @@
+import Heading from "../components/Heading";
 import BookmarkedList from "../features/bookmarked/BookmarkedList";
 
 function BookmarkedPage() {
   return (
     <>
-      <h1>Bookmarked List</h1>
+      <Heading>Bookmarked List</Heading>
       <BookmarkedList />
     </>
   );
