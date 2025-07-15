@@ -1,7 +1,15 @@
-import firstExercise from "../../assets/exercise-1.jpg";
 import type { ExerciseType } from "../../types/ExerciseType";
+import firstExercise from "../../assets/exercise-1.jpg";
 
-function BookmarkedCard({ bookmarked }: { bookmarked: ExerciseType }) {
+type BookmarkedCardProps = {
+  bookmarked: ExerciseType;
+  onRemoveBookmarked: (id: number) => void;
+};
+
+function BookmarkedCard({
+  bookmarked,
+  onRemoveBookmarked,
+}: BookmarkedCardProps) {
   return (
     <div className="bg-black/30 backdrop-blur-md border-2 border-[#3a3a3a] rounded-2xl p-4 shadow-lg text-white flex justify-between gap-6 items-center">
       <img
@@ -28,7 +36,10 @@ function BookmarkedCard({ bookmarked }: { bookmarked: ExerciseType }) {
           {bookmarked.category}
         </p>
         <p className="text-md text-gray-400 mb-1">{bookmarked.description}</p>
-        <button className="bg-[#AD131A] px-12 py-3 rounded-lg font-medium cursor-pointer mt-3">
+        <button
+          className="bg-[#AD131A] px-12 py-3 rounded-lg font-medium cursor-pointer mt-3"
+          onClick={() => onRemoveBookmarked(bookmarked.id)}
+        >
           Remove From List
         </button>
       </div>

@@ -1,7 +1,9 @@
-import firstExercise from "../../assets/exercise-1.jpg";
 import type { ExerciseType } from "../../types/ExerciseType";
+import firstExercise from "../../assets/exercise-1.jpg";
+import { useBookmarkedContext } from "../../context/BookmarkContext";
 
 function ExerciseCard({ exercise }: { exercise: ExerciseType }) {
+  const { handleAddBookmarked } = useBookmarkedContext();
   return (
     <div className=" bg-black/30 backdrop-blur-md border-2 border-[#3a3a3a] rounded-2xl p-4 shadow-lg text-white">
       <img src={firstExercise} alt={exercise.name} className="mb-2" />
@@ -24,7 +26,10 @@ function ExerciseCard({ exercise }: { exercise: ExerciseType }) {
       </p>
 
       <div className="flex justify-center mt-1">
-        <button className="bg-[#AD131A] px-12 py-3 rounded-lg font-medium cursor-pointer">
+        <button
+          className="bg-[#AD131A] px-12 py-3 rounded-lg font-medium cursor-pointer"
+          onClick={() => handleAddBookmarked(exercise)}
+        >
           Add To List
         </button>
       </div>
