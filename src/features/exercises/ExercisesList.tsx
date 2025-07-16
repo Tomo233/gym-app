@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import type { ExerciseType } from "../../types/ExerciseType";
 import ExerciseCard from "./ExerciseCard";
+import Loader from "../../components/Loader";
 
-const exerciseData = {
-  name: "3/4 sit-up",
-  bodyPart: "waist",
-  category: "strength",
-  description:
-    "The 3/4 sit-up is an abdominal exercise performed with body weight. It involves curling the torso up to a 45-degree angle, engaging the abs, hip flexors, and lower back. This movement is commonly used to build core strength and stability.",
-  difficulty: "beginner",
-  equipment: "body weight",
-};
+// const exerciseData = {
+//   name: "3/4 sit-up",
+//   bodyPart: "waist",
+//   category: "strength",
+//   description:
+//     "The 3/4 sit-up is an abdominal exercise performed with body weight. It involves curling the torso up to a 45-degree angle, engaging the abs, hip flexors, and lower back. This movement is commonly used to build core strength and stability.",
+//   difficulty: "beginner",
+//   equipment: "body weight",
+// };
 
 // const exerciseDataList = [
 //   {
@@ -73,10 +74,13 @@ function ExercisesList() {
 
   return (
     <div className="grid grid-cols-3 gap-6">
-      {isLoading && <p>loading...</p>}
-      {exercises?.map((exercise) => (
-        <ExerciseCard exercise={exercise} key={exercise.id} />
-      ))}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        exercises?.map((exercise) => (
+          <ExerciseCard exercise={exercise} key={exercise.id} />
+        ))
+      )}
     </div>
   );
 }
