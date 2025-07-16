@@ -1,6 +1,6 @@
-import { useState } from "react";
-import ExerciseCard from "./ExerciseCard";
+import { useEffect, useState } from "react";
 import type { ExerciseType } from "../../types/ExerciseType";
+import ExerciseCard from "./ExerciseCard";
 
 const exerciseData = {
   name: "3/4 sit-up",
@@ -12,65 +12,68 @@ const exerciseData = {
   equipment: "body weight",
 };
 
-const exerciseDataList = [
-  {
-    ...exerciseData,
-    name: "3/4 sit-up",
-    id: 1,
-  },
-  {
-    ...exerciseData,
-    name: "Full sit-up",
-    difficulty: "intermediate",
-    id: 2,
-  },
-  {
-    ...exerciseData,
-    name: "Crunch",
-    description:
-      "A crunch is a short-range abdominal exercise focused on the upper abs.",
-    id: 3,
-  },
-  {
-    ...exerciseData,
-    name: "Leg raise",
-    equipment: "none",
-    difficulty: "beginner",
-    id: 4,
-  },
-  {
-    ...exerciseData,
-    name: "Russian twist",
-    difficulty: "advanced",
-    equipment: "medicine ball",
-    id: 5,
-  },
-];
+// const exerciseDataList = [
+//   {
+//     ...exerciseData,
+//     name: "3/4 sit-up",
+//     id: 1,
+//   },
+//   {
+//     ...exerciseData,
+//     name: "Full sit-up",
+//     difficulty: "intermediate",
+//     id: 2,
+//   },
+//   {
+//     ...exerciseData,
+//     name: "Crunch",
+//     description:
+//       "A crunch is a short-range abdominal exercise focused on the upper abs.",
+//     id: 3,
+//   },
+//   {
+//     ...exerciseData,
+//     name: "Leg raise",
+//     equipment: "none",
+//     difficulty: "beginner",
+//     id: 4,
+//   },
+//   {
+//     ...exerciseData,
+//     name: "Russian twist",
+//     difficulty: "advanced",
+//     equipment: "medicine ball",
+//     id: 5,
+//   },
+// ];
 
 function ExercisesList() {
-  const [exercises] = useState<ExerciseType[]>(exerciseDataList);
-  // useEffect(() => {
-  //   const fetchExercises = async () => {
-  //     try {
-  //       setIsLoading(true);
-  //       const res = await fetch("https://exercisedb.p.rapidapi.com/exercises", {
-  //         headers: {
-  //           "X-RapidAPI-Key":
-  //             "4e10db42b8msh895c05ac60ccd7ep1b1d53jsn96e50f605b96",
-  //         },
-  //       });
-  //       const data = await res.json();
-  //       setExercises(data);
-  //       setIsLoading(false);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   fetchExercises();
-  // }, []);
+  const [exercises, setExercises] = useState<ExerciseType[]>();
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchExercises = async () => {
+      try {
+        setIsLoading(true);
+        const res = await fetch("https://exercisedb.p.rapidapi.com/exercises", {
+          headers: {
+            "X-RapidAPI-Key":
+              "b5956ff108msh2d437dae1a1df9fp12acabjsnda0d134e95ef",
+          },
+        });
+        const data = await res.json();
+        setExercises(data);
+        setIsLoading(false);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchExercises();
+  }, []);
 
   return (
     <div className="grid grid-cols-3 gap-6">
+      {isLoading && <p>loading...</p>}
       {exercises?.map((exercise) => (
         <ExerciseCard exercise={exercise} key={exercise.id} />
       ))}
