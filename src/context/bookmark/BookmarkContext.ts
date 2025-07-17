@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import type { ExerciseType } from "../types/ExerciseType";
+import type { ExerciseType } from "../../types/ExerciseType";
 
 type BookmarkedContextValue = {
   bookmarked: ExerciseType[];

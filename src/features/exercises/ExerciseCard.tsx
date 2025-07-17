@@ -1,6 +1,6 @@
 import type { ExerciseType } from "../../types/ExerciseType";
 import firstExercise from "../../assets/exercise-1.jpg";
-import { useBookmarkedContext } from "../../context/BookmarkContext";
+import { useBookmarkedContext } from "../../context/bookmark/BookmarkContext";
 
 function ExerciseCard({ exercise }: { exercise: ExerciseType }) {
   const { handleAddBookmarked, bookmarked } = useBookmarkedContext();

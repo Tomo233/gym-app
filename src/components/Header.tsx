@@ -1,8 +1,11 @@
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import Logo from "../assets/gym.png";
 import { Link } from "react-router";
+import { useExerciseContext } from "../context/exercise/ExerciseContext";
 
 function Header() {
+  const { query, setQuery } = useExerciseContext();
+  console.log(query);
   return (
     <header className="flex justify-between items-center border-b-2  border-[#3a3a3a] ">
       <Link to="/">
@@ -13,6 +16,8 @@ function Header() {
         type="text"
         placeholder="Search Exercises..."
         className="w-full max-w-md px-4 py-3 text-white font-bold text-base bg-[#1a1a1a] border-2 border-[#3a3a3a] rounded-lg shadow-md placeholder-gray-400 focus:outline-none focus:border-[#AD131A] focus:ring-0"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
       />
 
       <Link to="/bookmarked">

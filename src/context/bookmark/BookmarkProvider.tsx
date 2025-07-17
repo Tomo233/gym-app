@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
-import type { ExerciseType } from "../types/ExerciseType";
+import type { ExerciseType } from "../../types/ExerciseType";
 import { BookmarkedContext } from "./BookmarkContext";
 
 export function BookmarkedProvider({ children }: { children: ReactNode }) {

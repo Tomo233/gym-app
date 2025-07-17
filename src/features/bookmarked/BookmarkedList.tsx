@@ -1,5 +1,5 @@
+import { useBookmarkedContext } from "../../context/bookmark/BookmarkContext";
 import BookmarkedCard from "./BookmarkedCard";
-import { useBookmarkedContext } from "../../context/BookmarkContext";
 
 function BookmarkedList() {
   const { bookmarked, handleRemoveBookmarked } = useBookmarkedContext();
