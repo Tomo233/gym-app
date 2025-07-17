@@ -46,12 +46,16 @@ export function ExerciseProvider({ children }: { children: ReactNode }) {
     };
   }, [query]);
 
+  const onSetQuery = (value: string) => {
+    setQuery(value);
+  };
+
   return (
     <ExerciseContext.Provider
       value={{
         exercises,
         query,
-        setQuery,
+        onSetQuery,
         isLoading,
       }}
     >

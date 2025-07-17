@@ -1,15 +1,10 @@
-import {
-  createContext,
-  useContext,
-  type Dispatch,
-  type SetStateAction,
-} from "react";
+import { createContext, useContext } from "react";
 import type { ExerciseType } from "../../types/ExerciseType";
 
 type ExerciseContextValue = {
   exercises: ExerciseType[];
   query: string;
-  setQuery: Dispatch<SetStateAction<string>>;
+  onSetQuery: (value: string) => void;
   isLoading: boolean;
 };
 

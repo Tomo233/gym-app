@@ -5,6 +5,9 @@ import { useExerciseContext } from "../../context/exercise/ExerciseContext";
 function ExercisesList() {
   const { exercises, isLoading } = useExerciseContext();
 
+  if (exercises.length === 0)
+    return <p className="text-xl font-medium text-white">No results</p>;
+
   return (
     <div className="grid grid-cols-3 gap-6">
       {isLoading ? (
